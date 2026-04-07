@@ -17,25 +17,27 @@ int main() {
     printArray(mas, n);
 
     // Сортировка:
-    // четные по возрастанию
-    // нечетные по убыванию
+    // чётные по возрастанию
+    // нечётные по убыванию
     for (int i = 0; i < n - 1; i++) {
-        for (int j = 0; j < n - 1; j++) {
-            bool even1 = (mas[j] % 2 == 0);
-            bool even2 = (mas[j + 1] % 2 == 0);
+        for (int j = i + 1; j < n; j++) {
 
-            // Если оба четные, сортируем по возрастанию
-            if (even1 && even2 && mas[j] > mas[j + 1]) {
-                int temp = mas[j];
-                mas[j] = mas[j + 1];
-                mas[j + 1] = temp;
+            // если оба четные - сортируем по возрастанию
+            if (mas[i] % 2 == 0 && mas[j] % 2 == 0) {
+                if (mas[i] > mas[j]) {
+                    int temp = mas[i];
+                    mas[i] = mas[j];
+                    mas[j] = temp;
+                }
             }
 
-            // Если оба нечетные, сортируем по убыванию
-            if (!even1 && !even2 && mas[j] < mas[j + 1]) {
-                int temp = mas[j];
-                mas[j] = mas[j + 1];
-                mas[j + 1] = temp;
+            // если оба нечетные - сортируем по убыванию
+             if (mas[i] % 2 != 0 && mas[j] % 2 != 0) {
+                if (mas[i] < mas[j]) {
+                    int temp = mas[i];
+                    mas[i] = mas[j];
+                    mas[j] = temp;
+                }
             }
         }
     }
